@@ -1,0 +1,90 @@
+﻿@model List<Agile.Models.Story>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<!--Floating Editing Navbar-->
+<div class="fixed-action-btn horizontal" style="top: 100px; right: 24px;">
+    <a class="btn-floating btn-large red">
+        <i class="large material-icons">mode_edit</i>
+    </a>
+    <ul>
+        <li><a class="btn-floating red tooltipped" href="#AddStoryModal" id="add-story-btn"  data-position="bottom" data-delay="50" data-tooltip="Add Story"><i class="material-icons">queue</i></a></li>
+        <li><a class="btn-floating blue lighten-1 tooltipped" href="#AddUserModal" id="add-user-btn" data-position="bottom" data-delay="50" data-tooltip="Add User"><i class="material-icons">perm_identity</i></a></li>
+        <li><a class="btn-floating green tooltipped" data-position="bottom" data-delay="50" data-tooltip="Subscribe User"><i class="material-icons">assignment_ind</i></a></li>
+    </ul>
+</div>
+<!--Floating Editing Navbar-->
+
+<!--AddUser Form Modal-->
+@{ Html.RenderAction("AddUserForm", "Users"); }
+<!--End Form Modal-->
+
+
+<!--AddUser Form Modal-->
+@{ Html.RenderAction("AddStoryForm", "Stories"); }
+<!--End Form Modal-->
+
+
+<!--UserListModal Form Modal-->
+@*{ Html.RenderAction("UsersList", "Home"); }*@
+<!--End Form Modal-->
+
+<div class="section">
+    <h4>Dashboard</h4>
+    <div class="row">
+        @foreach (var story in Model)
+        {
+            <div class="col m4">
+                <div class="card #eeeeee grey lighten-3 hoverable">
+                    <div class="card-content blue-text">
+                        <span class="card-title">@story.Title</span>
+                        <ul>
+                            @foreach (var user in story.Users)
+                            {
+                                <li>@user.UserName</li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="card-action #42a5f5 blue lighten-1">
+                        @Html.ActionLink("Subscribe User", "UsersList", "Home", new { storyId = story.StoryID }, new { @id = "users-list-btn", @class = "#42a5f5 blue lighten-1 white-text" })
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+    <h4>Assigned Hours Data</h4>
+    <div class="row">
+        <table class="highlight centered">
+            <thead>
+                <tr>
+                    <th data-field="">UserName</th>
+                    <th data-field="">Hours Remaining</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Alvin</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td>Alan</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td>Jonathan</td>
+                    <td>10</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

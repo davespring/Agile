@@ -1,0 +1,16 @@
+﻿@model List<Agile.Models.Story>
+
+@{
+    ViewBag.Title = "ViewStories";
+}
+
+<h2>ViewStories</h2>
+
+<ul class="collection with-header">
+    <li class="collection-header"><h4>Stories</h4></li>
+    @foreach (var story in Model)
+    {
+        <li class="collection-item">@story.Title</li>
+    }
+    
+</ul>

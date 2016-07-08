@@ -1,0 +1,39 @@
+﻿@model Agile.Models.Story
+
+
+<!-- Add User Modal Structure -->
+<div id="AddStoryModal" class="modal" href="#AddStoryModal">
+@using (Html.BeginForm("AddStory", "Stories", FormMethod.Post))
+{
+    <div class="modal-content">
+        <h4>Add Story</h4>
+        <div>
+
+            @Html.AntiForgeryToken()
+
+            <div class="col-m12">
+                <h4>Story Data</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="row">
+                    <div class="input-field col s6">
+                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @type = "text", @class = "validate", @placeholder = "Story Title" } })
+                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        @Html.EditorFor(model => model.Hours, new { htmlAttributes = new { @type = "text", @class = "validate", @placeholder = "Hours" } })
+                        @Html.ValidationMessageFor(model => model.Hours, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <input type="submit" value="Submit" class="btn waves-effect waves-light" />
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+}
+</div>

@@ -1,0 +1,24 @@
+﻿@model List<Agile.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<ul class="collection">
+
+    @foreach (var user in Model)
+    {
+        <li class="collection-item avatar">
+            <img src="~/Content/img/testavatar.jpg" alt="" class="circle">
+            <span class="title">@user.UserName</span>
+            <p>
+                First Line <br>
+                Second Line
+            </p>
+            <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+        </li>
+    }
+</ul>

@@ -1,0 +1,34 @@
+﻿@model Agile.Models.User
+
+<!-- Add User Modal Structure -->
+<div id="AddUserModal" class="modal" href="#AddUserModal">
+@using (Html.BeginForm("AddUser", "Users", FormMethod.Post))
+{
+    <div class="modal-content">
+        <h4>Add User</h4>
+        <div>
+
+                @Html.AntiForgeryToken()
+
+                <div class="col-m12">
+                    <h4>User Data</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="row">
+                        <div class="input-field col s6">
+                            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @type = "text", @class = "validate", @placeholder = "UserName" } })
+                            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+    <div class="modal-footer">
+        <input type="submit" value="Submit" class="btn waves-effect waves-light" />
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+}
+</div>
+            
+

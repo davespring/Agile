@@ -1,0 +1,10 @@
+﻿@model Agile.Models.SubscribeUserViewModel
+
+<div id="UsersListModal" class="modal" href="#UsersListModal">
+    <ul class="collection">
+        @foreach (var user in Model.AvailableUSers)
+        {
+            <li class="collection-item">@Html.ActionLink(user.UserName, "SubscribeUser", "Home", new { userId = user.ID, storyId=Model.StoryToSubscribe.StoryID }, null)</li>
+        }
+    </ul>
+</div>
