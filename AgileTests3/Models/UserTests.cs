@@ -21,10 +21,11 @@ namespace Agile.Models.Tests
             int expRemainingHours = 36;
 
             // Act
+            user.UserName = "TestUser";
             story.Title = "TestTitle";
             story.Hours = 4;
             user.Stories.Add(story);
-            user.AddHours(story);
+            user.AddHours(story.Hours);
             int actHoursRemaining = user.HoursRemaining;
 
             // Assert

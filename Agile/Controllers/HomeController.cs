@@ -35,7 +35,7 @@ namespace Agile.Controllers
             User subscribedUser = db.Users.Where(x => x.ID == userId).ToList().First();
             
             story.Users.Add(subscribedUser);
-            subscribedUser.AddHours(story);
+            subscribedUser.AddHours(story.Hours);
             db.SaveChanges();
 
             return RedirectToAction("Index");

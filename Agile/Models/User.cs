@@ -48,9 +48,9 @@ namespace Agile.Models
 
         #region Methods
 
-        public void AddHours(Story story)
+        public void AddHours(int hours)
         {
-            hoursRemaining -= story.Hours;
+            hoursRemaining -= hours;
         }
 
         #endregion
