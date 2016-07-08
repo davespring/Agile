@@ -7,12 +7,29 @@ namespace Agile.Models
 {
     public class User
     {
-        public int totalHours = 40;
+        #region Constructors
+
+        public User()
+        {
+            
+        }
+
+        #endregion
+
+        #region Properties
 
         public int ID { get; set; }
 
         [Required]
         public string UserName { get; set; }
+
+
+        private int totalHours;
+        public int TotalHours
+        {
+            get { return totalHours; }
+            set { totalHours = 40; }
+        }
 
 
         private int hoursRemaining;
@@ -26,11 +43,17 @@ namespace Agile.Models
 
         public virtual ICollection<Story> Stories { get; set; }
 
+        #endregion
+
+
+        #region Methods
 
         public void AddHours(Story story)
         {
-            hoursRemaining = totalHours - story.Hours;
+            hoursRemaining -= story.Hours;
         }
+
+        #endregion
 
     }
 }

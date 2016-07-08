@@ -7,7 +7,7 @@ namespace Agile.Models
 {
     public class SubscribeUserViewModel
     {
-        public List<User> AvailableUSers { get; set; }
+        public List<User> AvailableUsers { get; set; }
         public Story StoryToSubscribe { get; set; }
     }
 }

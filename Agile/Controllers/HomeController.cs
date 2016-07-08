@@ -35,6 +35,7 @@ namespace Agile.Controllers
             User subscribedUser = db.Users.Where(x => x.ID == userId).ToList().First();
             
             story.Users.Add(subscribedUser);
+            subscribedUser.AddHours(story);
             db.SaveChanges();
 
             return RedirectToAction("Index");
@@ -48,7 +49,7 @@ namespace Agile.Controllers
             //TempData["storyId"] = storyId;
 
             var model = new SubscribeUserViewModel();
-            model.AvailableUSers = db.Users.ToList();
+            model.AvailableUsers = db.Users.ToList();
             model.StoryToSubscribe = db.Stories.Where(s => s.StoryID == storyId).FirstOrDefault();
 
             return PartialView("UsersList", model);
