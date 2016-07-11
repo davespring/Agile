@@ -16,6 +16,11 @@ namespace Agile.Models
         [Required]
         public int Hours { get; set; }
 
+        [Required]
+        [StringLength(140)]
+        public string Description { get; set; }
+
+
         public virtual ICollection<User> Users { get; set; }
 
     }

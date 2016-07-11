@@ -27,6 +27,14 @@
                         @Html.ValidationMessageFor(model => model.Hours, "", new { @class = "text-danger" })
                     </div>
                 </div>
+
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @type = "text", @class = "materialize-textarea", @placeholder = "Description" } })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
             </div>
 
         </div>

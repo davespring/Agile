@@ -10,7 +10,11 @@
     <li class="collection-header"><h4>Stories</h4></li>
     @foreach (var story in Model)
     {
-        <li class="collection-item">@story.Title</li>
+        <li class="collection-item">@story.Title
+        @Html.ActionLink("Details", "StoryDetails", "Stories", new { storyId = story.StoryID }, null ) 
+        @Html.ActionLink("Edit", "EditStory", "Stories", new { storyId = story.StoryID }, null)
+        @Html.ActionLink("Remove", "RemoveStory", "Stories", new { storyId = story.StoryID }, null)
+        </li>
     }
     
 </ul>

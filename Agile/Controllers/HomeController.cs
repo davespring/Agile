@@ -31,8 +31,11 @@ namespace Agile.Controllers
         {
             //int storyId = (int)TempData["storyId"];
 
-            Story story = db.Stories.Where(x => x.StoryID == storyId).ToList().First();
-            User subscribedUser = db.Users.Where(x => x.ID == userId).ToList().First();
+            Story story = db.Stories.Find(storyId);
+            User subscribedUser = db.Users.Find(userId);
+
+            //Story story = db.Stories.Where(x => x.StoryID == storyId).ToList().First();
+            //User subscribedUser = db.Users.Where(x => x.ID == userId).ToList().First();
             
             story.Users.Add(subscribedUser);
             subscribedUser.AddHours(story.Hours);
@@ -50,8 +53,8 @@ namespace Agile.Controllers
 
             var model = new SubscribeUserViewModel();
             model.AvailableUsers = db.Users.ToList();
-            model.StoryToSubscribe = db.Stories.Where(s => s.StoryID == storyId).FirstOrDefault();
-
+            //model.StoryToSubscribe = db.Stories.Where(s => s.StoryID == storyId).FirstOrDefault();
+            model.StoryToSubscribe = db.Stories.Find(storyId);
             return PartialView("UsersList", model);
         }
 

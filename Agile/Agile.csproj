@@ -253,6 +253,9 @@
     <Content Include="Views\Stories\ViewStories.cshtml" />
     <Content Include="Views\Stories\AddStoryForm.cshtml" />
     <Content Include="Views\Home\UsersList.cshtml" />
+    <Content Include="Views\Stories\EditStory.cshtml" />
+    <Content Include="Views\Stories\StoryDetails.cshtml" />
+    <Content Include="Views\Stories\RemoveStory.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

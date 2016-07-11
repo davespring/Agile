@@ -1,0 +1,26 @@
+﻿@model Agile.Models.Story
+
+@{
+    ViewBag.Title = "StoryDetails";
+}
+
+<h2>StoryDetails</h2>
+
+
+
+<div class="row">
+    <div class="col m4">
+        <div class="card #eeeeee grey lighten-3 hoverable">
+            <div class="card-content blue-text">
+                <span class="card-title">@Model.Title</span>
+                <div>
+                    <p>Hours Assigned: @Model.Hours<p>
+                    <p>@Model.Description</p>
+                </div>
+            </div>
+            <div class="card-action #42a5f5 blue lighten-1">
+                @Html.ActionLink("Back to List", "ViewStories")
+            </div>
+        </div>
+    </div>
+</div>
