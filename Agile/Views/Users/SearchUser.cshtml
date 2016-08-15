@@ -1,0 +1,14 @@
+﻿@model Agile.Models.SearchUserViewModel
+
+@using (Html.BeginForm("SearchUser", "Users", FormMethod.Get))
+{
+    <div class="row">
+        <div class="input-field col s6">     
+            <input id="search" value="username">
+                <i class="material-icons">search</i>
+            <input type="submit" value="Submit" class="btn waves-effect waves-light" />
+        </div>
+    </div>
+}
+
+

@@ -1,4 +1,4 @@
-﻿@model Agile.Models.Story
+﻿@model Agile.Biz.Models.Story
 
 @{
     ViewBag.Title = "RemoveStory";
@@ -13,6 +13,7 @@
 
     @using (Html.BeginForm("RemoveStory", "Stories", FormMethod.Post)) {
         @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.StoryID);
         <div class="row">
             <div class="col m6">
                 <div class="card #eeeeee grey lighten-3 hoverable">
@@ -24,7 +25,7 @@
                         </div>
                     </div>
                     <div class="card-action #42a5f5 blue lighten-1">
-                        <input type="submit" value="delete" class="btn waves-effect waves-light" />
+                        <input type="submit" value="RemoveStory" class="btn waves-effect waves-light" />
                         @Html.ActionLink("Back to List", "ViewStories", new { @class = "waves-effect waves-green btn-flat" })
                     </div>
                 </div>

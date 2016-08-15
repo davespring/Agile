@@ -1,4 +1,4 @@
-﻿using Agile.Models;
+﻿using Agile.Biz.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -6,7 +6,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
 
-namespace Agile.DAL
+namespace Agile.Biz.DAL
 {
     public class AgileContext : DbContext
     {
@@ -16,7 +16,7 @@ namespace Agile.DAL
         }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<Subscribe> Subscriptions { get; set; }
+        //public DbSet<Subscribe> Subscriptions { get; set; }
         public DbSet<Story> Stories { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

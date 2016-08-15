@@ -5,15 +5,15 @@ namespace Agile.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Agile.DAL.AgileContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Agile.Biz.DAL.AgileContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            ContextKey = "Agile.DAL.AgileContext";
+            ContextKey = "Agile.Biz.DAL.AgileContext";
         }
 
-        protected override void Seed(Agile.DAL.AgileContext context)
+        protected override void Seed(Agile.Biz.DAL.AgileContext context)
         {
             //  This method will be called after migrating to the latest version.
 

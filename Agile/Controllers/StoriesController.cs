@@ -1,5 +1,6 @@
-﻿using Agile.DAL;
-using Agile.Models;
+﻿using Agile.Biz.DAL;
+using Agile.Biz.Models;
+//using Agile.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,19 +9,28 @@ using System.Web;
 using System.Web.Mvc;
 
 
+
 namespace Agile.Controllers
 {
     public class StoriesController : Controller
     {
+        private readonly IStoryDAL storyDal;
 
-        private AgileContext db = new AgileContext();
+
+        public StoriesController(IStoryDAL storyDal)
+        {
+            this.storyDal = storyDal;
+        }
+
+        //private AgileContext db = new AgileContext();
 
 
         // GET: Stories
         public ActionResult ViewStories()
         {
-            var model = db.Stories.ToList();
-            return View("ViewStories", model);
+            //var model = db.Stories.ToList();
+            var stories = storyDal.GetAllStories();
+            return View("ViewStories", stories);
         }
 
 
@@ -29,8 +39,9 @@ namespace Agile.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Stories.Add(story);
-                db.SaveChanges();
+                //db.Stories.Add(story);
+                //db.SaveChanges();
+                storyDal.AddStory(story);
                 return RedirectToAction("ViewStories", "Stories");
             }
             else
@@ -53,9 +64,10 @@ namespace Agile.Controllers
         // Show story details with details link and after editing
         public ActionResult StoryDetails(int storyId)
         {
-            var model = db.Stories.Find(storyId);
+            //var model = db.Stories.Find(storyId);
+            var story = storyDal.GetStory(storyId);
 
-            return View(model);
+            return View(story);
         }
 
 
@@ -63,9 +75,10 @@ namespace Agile.Controllers
         [HttpGet]
         public ActionResult EditStory(int storyId)
         {
-            var model = db.Stories.Find(storyId);
+            //var model = db.Stories.Find(storyId);
 
-            return View(model);
+            var story = storyDal.GetStory(storyId);
+            return View(story);
         }
 
         // Edit a story action
@@ -74,8 +87,9 @@ namespace Agile.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(story).State = EntityState.Modified;
-                db.SaveChanges();
+                //db.Entry(story).State = EntityState.Modified;
+                //db.SaveChanges();
+                storyDal.EditStory(story);
                 return RedirectToAction("StoryDetails", new { storyId = story.StoryID });
             }
             else
@@ -89,17 +103,26 @@ namespace Agile.Controllers
         [HttpGet]
         public ActionResult RemoveStory(int storyId)
         {
-            var model = db.Stories.Find(storyId);
-            return View(model);
+            //var model = db.Stories.Find(storyId);
+            var story = storyDal.GetStory(storyId);
+            return View(story);
         }
 
         // Remove a Story
         [HttpPost]
-        public ActionResult RemoveStory(Story story)
+        [ActionName("RemoveStory")]
+        [ValidateAntiForgeryToken]
+        public ActionResult RemoveStoryConfirmed(int storyId)
         {
-            db.Stories.Remove(story);
-            db.SaveChanges();
+            //var story = db.Stories.Find(storyId);
+            //db.Stories.Remove(story);
+            //db.SaveChanges();
+
+            var story = storyDal.GetStory(storyId);
+            storyDal.RemoveStory(storyId);
+
             return RedirectToAction("ViewStories");
+            
         }
     }
 }

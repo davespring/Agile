@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Agile.Models
+namespace Agile.Biz.Models
 {
     public class User
     {
@@ -11,16 +12,16 @@ namespace Agile.Models
 
         public User()
         {
-            
+
         }
 
         #endregion
 
         #region Properties
 
-        public int ID { get; set; }
+        public int Id { get; set; }
 
-        [Required]
+        
         public string UserName { get; set; }
 
 
@@ -54,9 +55,5 @@ namespace Agile.Models
         }
 
         #endregion
-
     }
 }
-
-
-

@@ -1,9 +1,8 @@
-﻿@model List<Agile.Biz.Models.Story>
+﻿@model Agile.Models.DashboardViewModel
 
 @{
-    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 
 
 <!--Floating Editing Navbar-->
@@ -12,23 +11,20 @@
         <i class="large material-icons">mode_edit</i>
     </a>
     <ul>
-        <li><a class="btn-floating red tooltipped" href="#AddStoryModal" id="add-story-btn"  data-position="bottom" data-delay="50" data-tooltip="Add Story"><i class="material-icons">queue</i></a></li>
+        <li><a class="btn-floating red tooltipped" href="#AddStoryModal" id="add-story-btn" data-position="bottom" data-delay="50" data-tooltip="Add Story"><i class="material-icons">queue</i></a></li>
         <li><a class="btn-floating blue lighten-1 tooltipped" href="#AddUserModal" id="add-user-btn" data-position="bottom" data-delay="50" data-tooltip="Add User"><i class="material-icons">perm_identity</i></a></li>
         <li><a class="btn-floating green tooltipped" data-position="bottom" data-delay="50" data-tooltip="Subscribe User"><i class="material-icons">assignment_ind</i></a></li>
     </ul>
 </div>
-<!--Floating Editing Navbar-->
 
+
+<!--Floating Editing Navbar-->
 <!--AddUser Form Modal-->
 @{ Html.RenderAction("AddUserForm", "Users"); }
 <!--End Form Modal-->
-
-
 <!--AddUser Form Modal-->
 @{ Html.RenderAction("AddStoryForm", "Stories"); }
 <!--End Form Modal-->
-
-
 <!--UserListModal Form Modal-->
 @*@{ Html.RenderAction("UsersList", "Home"); }*@
 <!--End Form Modal-->
@@ -36,7 +32,7 @@
 <div class="section">
     <h4>Dashboard</h4>
     <div class="row">
-        @foreach (var story in Model)
+        @foreach (var story in Model.stories)
         {
             <div class="col m4">
                 <div class="card #eeeeee grey lighten-3 hoverable">
@@ -72,19 +68,16 @@
             </thead>
 
             <tbody>
-                <tr>
-                    <td>Alvin</td>
-                    <td>20</td>
-                </tr>
-                <tr>
-                    <td>Alan</td>
-                    <td>20</td>
-                </tr>
-                <tr>
-                    <td>Jonathan</td>
-                    <td>10</td>
-                </tr>
+                @foreach (var user in Model.users)
+                {
+                    <tr>
+                        <td>@user.UserName</td>
+                        <td>@user.HoursRemaining</td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
 </div>
+
+

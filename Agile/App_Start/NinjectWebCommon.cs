@@ -10,6 +10,7 @@ namespace Agile.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using Biz.DAL;
 
     public static class NinjectWebCommon 
     {
@@ -44,6 +45,9 @@ namespace Agile.App_Start
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
+
+                kernel.Bind<IUserDAL>().To<UserSqlDAL>();
+                kernel.Bind<IStoryDAL>().To<StorySqlDAL>();
 
                 RegisterServices(kernel);
                 return kernel;

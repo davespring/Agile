@@ -6,9 +6,9 @@ using System.Web;
 
 namespace Agile.Models
 {
-    public class SubscribeUserViewModel
+    public class DashboardViewModel
     {
-        public List<User> AvailableUsers { get; set; }
-        public Story StoryToSubscribe { get; set; }
+        public List<User> users { get; set; }
+        public List<Story> stories { get; set; }
     }
 }

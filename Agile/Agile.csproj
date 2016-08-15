@@ -228,7 +228,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StoriesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
-    <Compile Include="DAL\AgileContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -237,10 +236,9 @@
       <DependentUpon>201606231937377_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Story.cs" />
-    <Compile Include="Models\Subscribe.cs" />
+    <Compile Include="Models\DashboardViewModel.cs" />
+    <Compile Include="Models\SearchUserViewModel.cs" />
     <Compile Include="Models\SubscribeUserViewModel.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -256,6 +254,9 @@
     <Content Include="Views\Stories\EditStory.cshtml" />
     <Content Include="Views\Stories\StoryDetails.cshtml" />
     <Content Include="Views\Stories\RemoveStory.cshtml" />
+    <Content Include="Views\Users\SearchUser.cshtml" />
+    <Content Include="Views\Users\ViewUser.cshtml" />
+    <Content Include="Views\Home\Dashboard.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -271,6 +272,12 @@
     <EmbeddedResource Include="Migrations\201606231937377_InitialCreate.resx">
       <DependentUpon>201606231937377_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Agile.Biz\Agile.Biz.csproj">
+      <Project>{2083049c-c219-44fa-868d-035a2fb2c9f1}</Project>
+      <Name>Agile.Biz</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

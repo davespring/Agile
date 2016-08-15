@@ -1,14 +1,14 @@
-﻿using Agile.Biz.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Agile.Biz.Models;
 
 namespace Agile.Models
 {
-    public class SubscribeUserViewModel
+    public class SearchUserViewModel
     {
         public List<User> AvailableUsers { get; set; }
-        public Story StoryToSubscribe { get; set; }
+
     }
 }
