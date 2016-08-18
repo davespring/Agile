@@ -26,18 +26,18 @@ namespace Agile.Controllers
         public ActionResult Index()
         {
             //var stories = db.Stories.ToList();
-            //var stories = storyDal.GetAllStories();
-
-            //return View("Index", stories);
-
             var stories = storyDal.GetAllStories();
-            var users = userDal.GetAllUsers();
 
-            DashboardViewModel dashModel = new DashboardViewModel();
-            dashModel.stories = stories;
-            dashModel.users = users;
+            return View("Index", stories);
 
-            return View("Dashboard", dashModel);
+            //var stories = storyDal.GetAllStories();
+            //var users = userDal.GetAllUsers();
+
+            //DashboardViewModel dashModel = new DashboardViewModel();
+            //dashModel.stories = stories;
+            //dashModel.users = users;
+
+            //return View("Dashboard", dashModel);
         }
 
 

@@ -58,6 +58,7 @@
     <Compile Include="DAL\IUserDAL.cs" />
     <Compile Include="DAL\StorySqlDAL.cs" />
     <Compile Include="DAL\UserSqlDAL.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Story.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
